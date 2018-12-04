@@ -11,7 +11,11 @@
  */
 
 function sayHello() {
-  dfd
+  const canvas=document.getElementById("canvas1");
+  const ctx=canvas1.getContext("2d");
+
+  ctx.font='48px sans-serif';
+  ctx.strokeText('Hello, World!', 10, 50);
 }
 
 /*
@@ -38,7 +42,32 @@ function sayHello() {
  */
 
 function drawRectangle() {
+  const canvas=document.getElementById("canvas2");
+  const ctx=canvas2.getContext('2d');
 
+    do{
+      width=prompt("Enter Width of Rectangle");
+        while(width<1){
+          width=prompt("Enter Width of Rectangle");
+        }
+
+      height=prompt("Enter Height of Rectangle");
+        while(height<1){
+          height=prompt("Enter Height of Rectangle");
+        }
+
+      x=prompt("Enter X-Coordinate of the Top Left Corner of the Rectangle");
+        while(x<5){
+          x=prompt("Enter X-Coordinate of the Top Left Corner of the Rectangle");
+        }
+
+      y=prompt("Enter Y-Coordinate of the Top Left Corner of the Rectangle");
+        while(y<5){
+          y=prompt("Enter Y-Coordinate of the Top Left Corner of the Rectangle");
+        }
+    } while(x>1024 || y>512 || width>1024 || height>512);
+
+  ctx.fillRect(x, y, width, height);
 }
 
 /*
@@ -67,7 +96,24 @@ function drawRectangle() {
  */
 
 function drawColoredRectangle() {
+  const canvas = document.getElementById('canvas3');
+  const ctx = canvas3.getContext('2d');
 
+  color=prompt("Enter a Color")
+
+  while(color!=="black" || color!=="blue" || color!=="green" || color!=="orange" || color!=="purple" || color!=="red" || color!=="yellow"){
+    alert("Color Not Supported");
+    break;
+  }
+
+  if(color!=="black" || color!=="blue" || color!=="green" || color!=="orange" || color!=="purple" || color!=="red" || color!=="yellow"){
+    break;
+  }
+
+  else{
+    ctx.fillStyle = "color";
+    ctx.fillRect(100, 50, 10, 10);
+  }
 }
 
 /*
