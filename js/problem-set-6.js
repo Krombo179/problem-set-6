@@ -99,20 +99,15 @@ function drawColoredRectangle() {
   const canvas = document.getElementById('canvas3');
   const ctx = canvas3.getContext('2d');
 
-  color=prompt("Enter a Color")
+  let color=prompt("Enter a Color")
 
-  while(color!=="black" || color!=="blue" || color!=="green" || color!=="orange" || color!=="purple" || color!=="red" || color!=="yellow"){
+  if(color!="black" && color!="blue" && color!="green" && color!="orange" && color!="purple" && color!="red" && color!="yellow"){
     alert("Color Not Supported");
-    break;
-  }
-
-  if(color!=="black" || color!=="blue" || color!=="green" || color!=="orange" || color!=="purple" || color!=="red" || color!=="yellow"){
-    break;
   }
 
   else{
-    ctx.fillStyle = "color";
-    ctx.fillRect(100, 50, 10, 10);
+    ctx.fillStyle = `${color}`;
+    ctx.fillRect(10, 10, 100, 50);
   }
 }
 
@@ -146,7 +141,21 @@ function drawColoredRectangle() {
  */
 
 function drawTriangle() {
+  const canvas=document.getElementById("canvas4");
+  const ctx=canvas4.getContext("2d");
 
+  let a=prompt("Pick the length of the first side")
+  a=a + 10
+
+  let b=prompt("Pick the length of the second side")
+  b=b + 10
+
+  ctx.beginPath();
+  ctx.moveTo(10, 10);
+  ctx.lineTo(10, a);
+  ctx.lineTo(b, a);
+  ctx.closePath();
+  ctx.stroke();
 }
 
 /*
