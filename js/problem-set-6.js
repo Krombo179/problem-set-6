@@ -151,6 +151,8 @@ function drawTriangle() {
   let b=prompt("Pick the length of the second side")
   b=b + 10
 
+  let c=prompt("Pick the length of the third side")
+
   ctx.beginPath();
   ctx.moveTo(10, 10);
   ctx.lineTo(10, a);
