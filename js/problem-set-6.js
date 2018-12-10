@@ -144,6 +144,7 @@ function drawTriangle() {
   const canvas=document.getElementById("canvas4");
   const ctx=canvas4.getContext("2d");
 
+  do{
   let a=prompt("Pick the length of the first side")
   a=a + 10
 
@@ -154,8 +155,9 @@ function drawTriangle() {
   ctx.moveTo(10, 10);
   ctx.lineTo(10, a);
   ctx.lineTo(b, a);
-  ctx.closePath();
+  ctx.lineTo(10, 10);
   ctx.stroke();
+  } while(x>1024 || y>512 || width>1024 || height>512);
 }
 
 /*
