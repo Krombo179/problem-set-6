@@ -44,6 +44,7 @@ function sayHello() {
 function drawRectangle() {
   const canvas=document.getElementById("canvas2");
   const ctx=canvas2.getContext('2d');
+  ctx.clearRect(0, 0, 1024, 512);
 
     do{
       width=prompt("Enter Width of Rectangle");
@@ -98,6 +99,7 @@ function drawRectangle() {
 function drawColoredRectangle() {
   const canvas = document.getElementById('canvas3');
   const ctx = canvas3.getContext('2d');
+  ctx.clearRect(0, 0, 1024, 128);
 
   let color=prompt("Enter a Color")
 
@@ -143,23 +145,36 @@ function drawColoredRectangle() {
 function drawTriangle() {
   const canvas=document.getElementById("canvas4");
   const ctx=canvas4.getContext("2d");
+  ctx.clearRect(0, 0, 1024, 512);
 
-  do{
-  let a=prompt("Pick the length of the first side")
-  a=a + 10
+  let side1=prompt("Pick the length of the first side")
+  side1=Number(side1)
 
-  let b=prompt("Pick the length of the second side")
-  b=b + 10
+  let side2=prompt("Pick the length of the second side")
+  side2=Number(side2)
 
-  let c=prompt("Pick the length of the third side")
+  let side3=prompt("Pick the length of the third side")
+  side3=Number(side3)
+
+  while((side1*side1) + (side2*side2) != (side3*side3) || side1+10 >=512 || side2+10 >= 1024){
+    alert("This is not a valid right triangle")
+    side1=prompt("Pick the length of the first side")
+    side1=Number(side1)
+    side2=prompt("Pick the length of the second side")
+    side2=Number(side2)
+    side3=prompt("Pick the length of the third side")
+    side3=Number(side3)
+  }
+
+  side1=side1+10
+  side2=side2+10
 
   ctx.beginPath();
   ctx.moveTo(10, 10);
-  ctx.lineTo(10, a);
-  ctx.lineTo(b, a);
+  ctx.lineTo(10, side1);
+  ctx.lineTo(side2, side1);
   ctx.lineTo(10, 10);
   ctx.stroke();
-  } while(x>1024 || y>512 || width>1024 || height>512);
 }
 
 /*
