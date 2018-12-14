@@ -197,7 +197,47 @@ function drawTriangle() {
  */
 
 function drawSmileyFace() {
+  const canvas=document.getElementById("canvas5");
+  const ctx=canvas5.getContext("2d");
+  ctx.clearRect(0, 0, 1024, 512);
 
+  let face;
+  let x = 5;
+  let y = 5;
+
+  do {
+    face = prompt("Enter face's radius");
+    face = Number(face);
+  } while (face + x >= 1024 || face + y >= 512 || face < 1)
+
+  while(x - face < 5 || x + face > 1024) {
+    x+= 5
+  }
+  while(y - face < 5 || y + face > 512) {
+    y+= 5
+  }
+
+  let mouth = face*0.70
+  let eyes = face*0.10
+  let eye1X = x - (face/3.5)
+  let eye1Y = y - (face/3)
+  let eye2X = x + (face/2)
+  let eye2Y = y - (face/3)
+  let m = y + (face/9)
+
+
+  ctx.beginPath();
+  ctx.arc(x,y,face,0,2*Math.PI);
+
+  ctx.moveTo(eye1X, eye1Y);
+  ctx.arc(eye1X-eyes, eye1Y, eyes, 0, 2*Math.PI);
+
+  ctx.moveTo(eye2X, eye2Y);
+  ctx.arc(eye2X-eyes, eye2Y, eyes, 0, 2*Math.PI);
+
+  ctx.moveTo(x+mouth,m);
+  ctx.arc(x, m, mouth, 0, Math.PI);
+  ctx.stroke();
 }
 
 /*
@@ -238,7 +278,26 @@ function drawStar() {
  */
 
 function drawStopSign() {
+  let canvas = document.getElementById('canvas7');
+  let ctx = canvas7.getContext('2d');
 
+  ctx.beginPath();
+  ctx.moveTo(67, 10);
+  ctx.lineTo(147, 10);
+  ctx.lineTo(204, 67);
+  ctx.lineTo(204, 147);
+  ctx.lineTo(147, 204);
+  ctx.lineTo(67, 204);
+  ctx.lineTo(10, 147);
+  ctx.lineTo(10, 67);
+  ctx.lineTo(67, 10);
+  ctx.fillStyle="red";
+  ctx.fill();
+  ctx.stroke();
+
+  ctx.font='65px sans-serif';
+  ctx.fillStyle="white";
+  ctx.fillText('STOP', 20, 130);
 }
 
 /*
