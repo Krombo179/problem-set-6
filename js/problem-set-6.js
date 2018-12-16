@@ -259,8 +259,46 @@ function drawSmileyFace() {
  */
 
 function drawStar() {
+    let canvas = document.getElementById('canvas6');
+    let ctx = canvas6.getContext('2d');
+    ctx.clearRect(0, 0, 1024, 256);
 
-}
+      let outerRad=prompt("Insert Outer Radius")
+      let innerRad=prompt("Insert Inner Radius")
+
+      outerRad=Number(outerRad);
+      innerRad=Number(innerRad);
+
+      if (outerRad>=innerRad && canvas.width>=outerRad+125 && canvas.height>=outerRad+125 && innerRad>=1 && outerRad>=1){
+        let points=5;
+        let outerX=[];
+        let outerY=[];
+        let innerX=[];
+        let innerY=[];
+        for(let i=0;i<points;i++){
+          outerX.push(Math.cos((Math.PI*2*i)/points-(Math.PI/2))*outerRad+125);
+          outerY.push(Math.sin((Math.PI*2*i)/points-(Math.PI/2))*outerRad+125);
+          innerX.push(Math.cos(((Math.PI*2*i)/points)-(Math.PI/2)+(Math.PI/points))*innerRad+125);
+          innerY.push(Math.sin(((Math.PI*2*i)/points)-(Math.PI/2)+(Math.PI/points))*innerRad+125);
+        }
+
+        ctx.beginPath();
+        ctx.moveTo(outerX[0], outerY[0]);
+
+        for(let j=0;j<outerX.length;j++){
+          ctx.lineTo(innerX[j], innerY[j]);
+          ctx.lineTo(outerX[j+1], outerY[j+1]);
+        }
+
+        ctx.lineTo(outerX[0], outerY[0]);
+        ctx.stroke();
+        ctx.closePath();
+    }
+
+    else{
+        alert("Invalid inputs");
+      }
+  }
 
 /*
  * Stop Sign. 7 points.
@@ -319,7 +357,28 @@ function drawStopSign() {
  */
 
 function drawPyramid() {
+  let canvas = document.getElementById('canvas8');
+  let ctx = canvas8.getContext('2d');
+  ctx.clearRect(0, 0, 1024, 512);
 
+  let length=prompt("Insert the side length");
+  length=Number(length);
+
+  let x=10;
+  let y=canvas.height-10;
+  let i=0;
+  let number=1;
+
+  while(i<5){
+    for(let j=0+number;j<=5;j++){
+      ctx.strokeRect(x,y-length,length,length);
+      x+=length;
+    }
+    x=10+(length/2)*number;
+    y-=length;
+    number++;
+    i++;
+  }
 }
 
 /*
@@ -352,5 +411,41 @@ function drawPyramid() {
  */
 
 function drawHouse() {
+  let canvas = document.getElementById('canvas9');
+  let ctx = canvas9.getContext('2d');
+  ctx.clearRect(0, 0, 1024, 760);
 
+  let houseColor = prompt("Please enter a house color")
+  while(houseColor != "brown" && houseColor !="blue" && houseColor !="green" && houseColor !="orange" && houseColor !="purple" && houseColor !="red" && houseColor !="yellow"){
+    houseColor = prompt(`${houseColor} is not a supported color`)
+  }
+
+  let doorColor = prompt("Please enter a door color")
+  while(doorColor != "brown" && doorColor !="blue" && doorColor !="green" && doorColor !="orange" && doorColor !="purple" && doorColor !="red" && doorColor !="yellow"){
+    doorColor = prompt(`${doorColor} is not supported color`)
+  }
+
+  ctx.rect(150, 250, 724, 495)
+  ctx.fillStyle = houseColor
+  ctx.fillRect(150, 250, 724, 495);
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.moveTo(150, 250);
+  ctx.lineTo(512, 10);
+  ctx.lineTo(874, 250);
+  ctx.lineTo(150, 250);
+  ctx.fillStyle = "gray"
+  ctx.fill();
+
+
+  ctx.rect(462, 545, 100, 200);
+  ctx.fillStyle = doorColor
+  ctx.fillRect(462, 545, 100, 200);
+  ctx.stroke();
+
+  ctx.rect(250, 350, 100, 100)
+  ctx.fillStyle = "light blue"
+  ctx.fill();
+  ctx.stroke();
 }
