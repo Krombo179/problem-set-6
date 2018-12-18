@@ -415,15 +415,15 @@ function drawHouse() {
   let ctx = canvas9.getContext('2d');
   ctx.clearRect(0, 0, 1024, 760);
 
-  let houseColor = prompt("Please enter a house color")
+  let houseColor = prompt("Please enter a house color.")
   while(houseColor != "brown" && houseColor !="blue" && houseColor !="green" && houseColor !="orange" && houseColor !="purple" && houseColor !="red" && houseColor !="yellow"){
-    houseColor = prompt(`${houseColor} is not a supported color`)
-  }
+      houseColor = prompt(`${houseColor} is not a supported color`)
+    }
 
-  let doorColor = prompt("Please enter a door color")
-  while(doorColor != "brown" && doorColor !="blue" && doorColor !="green" && doorColor !="orange" && doorColor !="purple" && doorColor !="red" && doorColor !="yellow"){
-    doorColor = prompt(`${doorColor} is not supported color`)
-  }
+  let doorColor = prompt("Please enter a front door color")
+  while(doorColor != "brown" && doorColor !="blue" && doorColor !="green" && doorColor !="orange" && doorColor !="purple" && doorColor !="red" && doorColor !="yellow" || doorColor == houseColor){
+      doorColor = prompt(`${doorColor} is not a supported color or is the same as the previous color`)
+    }
 
   ctx.rect(150, 250, 724, 495)
   ctx.fillStyle = houseColor
@@ -436,16 +436,39 @@ function drawHouse() {
   ctx.lineTo(874, 250);
   ctx.lineTo(150, 250);
   ctx.fillStyle = "gray"
+  ctx.closePath();
   ctx.fill();
-
 
   ctx.rect(462, 545, 100, 200);
   ctx.fillStyle = doorColor
   ctx.fillRect(462, 545, 100, 200);
   ctx.stroke();
 
+  let window = "SkyBlue"
+
+  ctx.rect(250, 550, 100, 100)
+  ctx.fillStyle = window
+  ctx.fillRect(250, 550, 100, 100);
+  ctx.stroke();
+
   ctx.rect(250, 350, 100, 100)
-  ctx.fillStyle = "light blue"
+  ctx.fillStyle = window
+  ctx.fillRect(250, 350, 100, 100);
+  ctx.stroke();
+
+  ctx.rect(674, 550, 100, 100)
+  ctx.fillStyle = window
+  ctx.fillRect(674, 550, 100, 100);
+  ctx.stroke();
+
+  ctx.rect(674, 350, 100, 100)
+  ctx.fillStyle = window
+  ctx.fillRect(674, 350, 100, 100);
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.arc(540, 650, 10, 0, 2*Math.PI)
+  ctx.fillStyle = "GoldenRod"
   ctx.fill();
   ctx.stroke();
 }
